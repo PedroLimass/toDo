@@ -53,6 +53,7 @@ interface ButtonIconProps
     VariantProps<typeof buttonIconVariants> {
   icon?: React.ComponentProps<typeof Icon>["svg"];
   loading?: boolean;
+  onClick?: () => void;
 }
 
 export default function ButtonIcon({
