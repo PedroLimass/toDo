@@ -2,8 +2,12 @@
 import { PlusIcon } from "@phosphor-icons/react";
 import Button from "../components/button";
 import TaskItem from "./task-item";
+import { useTask } from "../hooks/use-task";
 
 export default function TasksList() {
+
+  const { tasks, taskCount, concludedTasks } = useTask();
+  console.log({ tasks, taskCount, concludedTasks });
   return (
     <>
       <section>
