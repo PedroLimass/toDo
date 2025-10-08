@@ -20,12 +20,20 @@ export default function PageComponents() {
           </Badge>
           <Badge variant="secondary">2 de 5</Badge>
         </div>
-        <Button icon={Plus} variant="primary" size="md">
-          Button
-        </Button>
-        <ButtonIcon loading icon={TrashIcon} />
-        <ButtonIcon icon={TrashIcon} variant="secondary" />
-        <ButtonIcon icon={TrashIcon} variant="tertiary" />
+        <div>
+          <Button icon={Plus} variant="primary" size="md" >Nova Tarefa</Button>
+          <Button icon={Plus} variant="primary" size="md" handling>Criar Tarefa</Button>
+
+            
+          
+        </div>
+        <div>
+          <ButtonIcon loading icon={TrashIcon} />
+          <ButtonIcon icon={TrashIcon} variant="secondary" />
+          <ButtonIcon icon={TrashIcon} variant="tertiary" />
+          <ButtonIcon icon={TrashIcon} loading />
+          <ButtonIcon icon={TrashIcon} handling />
+        </div>
         <InputText placeholder="Type something..." />
         <InputCheckbox />
         <InputCheckbox loading />

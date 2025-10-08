@@ -3,6 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import type React from "react";
 import Icon from "./icon";
 import Text from "./text";
+import { SpinnerIcon } from "@phosphor-icons/react";
 
 export const buttonVariants = cva(
   `flex items-center justify-center cursor-pointer
@@ -19,11 +20,15 @@ export const buttonVariants = cva(
       disabled: {
         true: "opacity-50 cursor-not-allowed",
       },
+      handling: {
+        true: "cursor-event-none",
+      },
     },
     defaultVariants: {
       variant: "primary",
       size: "md",
       disabled: false,
+      handling: false
     },
   }
 );
@@ -58,6 +63,7 @@ interface ButtonProps
   extends Omit<React.ComponentProps<"button">, "size" | "disabled">,
     VariantProps<typeof buttonVariants> {
   icon?: React.ComponentProps<typeof Icon>["svg"];
+  handling?: boolean;
 }
 
 export default function Button({
@@ -67,17 +73,19 @@ export default function Button({
   className,
   children,
   icon: IconComponent,
+  handling,
   ...props
 }: ButtonProps) {
   return (
     <button
       {...props}
-      className={buttonVariants({ variant, size, className, disabled })}
+      className={buttonVariants({ variant, size, disabled, handling, className })}
       disabled={!!disabled}
     >
       {IconComponent && (
         <Icon
-          svg={IconComponent}
+          animate={handling}
+          svg={handling ? SpinnerIcon : IconComponent}
           className={buttonIconVariants({ variant, size })}
         />
       )}
